@@ -74,6 +74,17 @@ export default function App() {
            )
             }
        </div>
+      <div className="bloco-Pedidos">
+        <p>Meus pedidos</p>
+        listaPedidos.map((produto))=>
+        <table key={produto.id}>
+            <tr>
+                <td>{produto.item}</td>
+                <td>{produto.preco}</td>
+            </tr>
+        </table>
+
+       </div>
        </div>
     );
 }
