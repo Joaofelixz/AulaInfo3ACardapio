@@ -60,12 +60,24 @@ export default function App() {
         setPedidos([...listaPedidos, produto]);
     } 
     console.table(listaPedidos);
+  
+   const removeItem =(id)=>{
+    let seRemoveu = false;
+  let listaAuxiliar= listaPedidos.filter((pedido)=> {
+     if(produto.id !== id){
+          seRemoveu == true;
+     }else{
+        seRemoveu = true;
+        return false;
+     }  
+    });
+   setPedidos(listaAuxiliar)
+   }
 
     return(
     <div className= "bloco-principal" >
         <div className= "bloco-produtos">
-            {
-       listaProdutos.map((produto)=>
+       {listaProdutos.map((produto)=>
            <div key={produto.id}> 
                 <img src={produto.imagem}/>
                 <p>{produto.item}</p>
@@ -76,14 +88,17 @@ export default function App() {
        </div>
       <div className="bloco-Pedidos">
         <p>Meus pedidos</p>
-        listaPedidos.map((produto))=>
+        {listaPedidos.map((produto)=>
         <table key={produto.id}>
             <tr>
                 <td>{produto.item}</td>
                 <td>{produto.preco}</td>
+                <td>
+                    <button onClick={()=> removeItem(produto.id)}>x</button>
+                </td>
             </tr>
         </table>
-
+        )}
        </div>
        </div>
     );
