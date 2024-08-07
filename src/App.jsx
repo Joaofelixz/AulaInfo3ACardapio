@@ -61,15 +61,24 @@ export default function App() {
     } 
     console.table(listaPedidos);
   
-    const removeItem = (id) => {
-        const listaAuxiliar = [];
-        listaPedidos.map((produto) => {
-            if (produto.id !== id) {
-                listaAuxiliar.push(produto);
+   const removeItem = (id)=> {
+    let remover = false;
+    let listaAux = listaPedidos.filter((pedido)=>
+       {
+        if(pedido.id == id){
+            if(remover == false){
+                remover = true
+                return null
+            }else{
+                return pedido
             }
-        });
-        setPedidos(listaAuxiliar);
-    };
+        }else{
+       return pedido
+        }
+       }
+    );
+    setPedidos(listaAux);
+   }
     return(
     <div className= "bloco-principal" >
         <div className= "bloco-produtos">
