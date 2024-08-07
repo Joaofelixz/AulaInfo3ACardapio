@@ -65,12 +65,13 @@ export default function App() {
     let remover = false;
     let listaAux = listaPedidos.filter((pedido)=>
        {
-        if(pedido.id == id){
-            if(remover == false){
+        if(remover == false){
+            if(pedido.id !== id){
+                return produto
+            
+            }else{
                 remover = true
                 return null
-            }else{
-                return pedido
             }
         }else{
        return pedido
@@ -91,7 +92,7 @@ export default function App() {
            )
             }
        </div>
-      <div className="bloco-Pedidos">
+      <div className="bloco-pedidos">
         <p>Meus pedidos</p>
         {listaPedidos.map((produto)=>
         <table key={produto.id}>
