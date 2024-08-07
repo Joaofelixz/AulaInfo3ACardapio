@@ -61,19 +61,15 @@ export default function App() {
     } 
     console.table(listaPedidos);
   
-   const removeItem =(id)=>{
-    let seRemoveu = false;
-  let listaAuxiliar= listaPedidos.filter((pedido)=> {
-     if(produto.id !== id){
-          seRemoveu == true;
-     }else{
-        seRemoveu = true;
-        return false;
-     }  
-    });
-   setPedidos(listaAuxiliar)
-   }
-
+    const removeItem = (id) => {
+        const listaAuxiliar = [];
+        listaPedidos.map((produto) => {
+            if (produto.id !== id) {
+                listaAuxiliar.push(produto);
+            }
+        });
+        setPedidos(listaAuxiliar);
+    };
     return(
     <div className= "bloco-principal" >
         <div className= "bloco-produtos">
